@@ -1,10 +1,10 @@
 // src/app/layout.tsx
 "use client";
 import "./globals.css";
-import type { Metadata } from "next";
+
 import Nav from "./components/Nav";
 import ThemeProvider from "./components/ThemeProvider";
-import Hero from "./components/Hero";
+
 import { SessionProvider } from "next-auth/react";
 
 

@@ -7,7 +7,7 @@ export default function SignOutPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h2 className="text-2xl font-semibold mb-4">You've been signed out</h2>
+      <h2 className="text-2xl font-semibold mb-4">You&apos;ve been signed out</h2>
       <button
         onClick={() => router.push("/")}
         className="bg-blue-500 text-white px-4 py-2 rounded mb-4"

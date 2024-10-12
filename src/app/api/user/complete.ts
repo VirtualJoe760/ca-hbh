@@ -11,7 +11,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     await dbConnect();
     const { email, ...extraInfo } = req.body;
-    const user = await User.findOneAndUpdate({ email }, { ...extraInfo, completed: true }, { new: true });
+    const user = await User.findOneAndUpdate(
+      { email },
+      { ...extraInfo, completed: true },
+      { new: true }
+    );
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -19,6 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.status(200).json({ success: true, user });
   } catch (error) {
+    console.error('Error updating user profile:', error); // Log the error for debugging
     return res.status(500).json({ message: 'Error updating user profile' });
   }
 }

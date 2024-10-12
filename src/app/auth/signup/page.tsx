@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/catalyst/button";
+import { signIn } from "next-auth/react"; // Ensure signIn is imported
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -28,7 +29,7 @@ export default function SignUp() {
     }
 
     if (!role) {
-      setError("Please select if you are a buyer or seller.");
+      setError("Please select if you are a buyer, seller, or realtor.");
       setLoading(false);
       return;
     }
@@ -52,6 +53,8 @@ export default function SignUp() {
         setError(data.message || "Failed to create account");
       }
     } catch (error) {
+      // Log the error for debugging and set a general error message
+      console.error("Sign-up error:", error);
       setError("An error occurred. Please try again.");
     } finally {
       setLoading(false);
@@ -124,7 +127,7 @@ export default function SignUp() {
             required
           >
             <option value="" disabled>
-              Are you planning on buying or selling with us?
+              Are you planning on buying, selling, or joining as a realtor?
             </option>
             <option value="buyer">Buyer</option>
             <option value="seller">Seller</option>

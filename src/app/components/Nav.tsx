@@ -26,7 +26,6 @@ import {
   Cog8ToothIcon,
   InboxIcon,
   LightBulbIcon,
-  MagnifyingGlassIcon,
   PlusIcon,
   ShieldCheckIcon,
   UserIcon,
