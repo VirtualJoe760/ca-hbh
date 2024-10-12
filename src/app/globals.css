@@ -2,26 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('/fonts/Afacad.ttf') format('truetype');
+  font-weight: 100 1000; /* Adjust this if needed */
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  /* Light Mode Colors */
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #1a73e8; /* Example primary color */
+  --secondary: #f4f4f4; /* Light background for cards/sections */
+  --accent: #ff5722; /* Accent color for links or buttons */
+  --muted: #6b7280; /* Muted text color for lighter text */
+  --border: #e5e7eb; /* Light border color */
+  --font-afacad: 'Afacad Flux', sans-serif; /* Default font-family */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Dark Mode Colors */
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #8ab4f8; /* Adjusted primary color for better contrast */
+    --secondary: #121212; /* Dark background for cards/sections */
+    --accent: #ff8c42; /* Adjusted accent color for contrast in dark mode */
+    --muted: #9ca3af; /* Muted text color for lighter text */
+    --border: #2d2d2d; /* Dark border color */
   }
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  font-family: var(--font-afacad), Arial, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .bg-primary {
+    background-color: var(--primary);
+  }
+
+  .bg-secondary {
+    background-color: var(--secondary);
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .border-custom {
+    border-color: var(--border);
   }
 }
