@@ -6,6 +6,7 @@ import { useRouter, useParams } from "next/navigation";
 import { useEffect } from "react";
 import { withAdminAccess } from "@/utils/withAdminAccess"; // Assuming you're using a specific HOC for admin access
 
+// No children prop is expected in AdminDashboard
 function AdminDashboard() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -39,7 +40,7 @@ function AdminDashboard() {
         <div className="mt-6">
           {/* Placeholder for additional admin functionalities */}
           <p className="text-gray-600">
-            Manage your users, view reports, and control platform settings here.
+            Manage users, view reports, and control platform settings here.
           </p>
         </div>
         <button
@@ -57,4 +58,5 @@ function AdminDashboard() {
   return null;
 }
 
+// Export without expecting { children: ReactNode }
 export default withAdminAccess(AdminDashboard);
