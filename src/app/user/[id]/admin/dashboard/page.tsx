@@ -39,7 +39,7 @@ function AdminDashboard() {
         <div className="mt-6">
           {/* Placeholder for additional admin functionalities */}
           <p className="text-gray-600">
-            Manage users, view reports, and control platform settings here.
+            Manage your users, view reports, and control platform settings here.
           </p>
         </div>
         <button
