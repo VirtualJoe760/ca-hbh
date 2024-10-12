@@ -3,14 +3,10 @@
 
 import { useSession, signOut } from "next-auth/react";
 import { useRouter, useParams } from "next/navigation";
-import { useEffect, ReactNode } from "react";
+import { useEffect } from "react";
 import { withAdminAccess } from "@/utils/withAdminAccess"; // Assuming you're using a specific HOC for admin access
 
-interface AdminDashboardProps {
-  children?: ReactNode;
-}
-
-function AdminDashboard({ children }: AdminDashboardProps) {
+function AdminDashboard() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { id } = useParams(); // Extracts the user ID from the URL
@@ -41,7 +37,6 @@ function AdminDashboard({ children }: AdminDashboardProps) {
           Welcome, {session?.user?.name}. You have administrative privileges.
         </p>
         <div className="mt-6">
-          {/* Placeholder for additional admin functionalities */}
           <p className="text-gray-600">
             Manage users, view reports, and control platform settings here.
           </p>
@@ -54,8 +49,6 @@ function AdminDashboard({ children }: AdminDashboardProps) {
         >
           Sign Out
         </button>
-        {/* Render children if needed */}
-        {children}
       </div>
     );
   }
@@ -63,5 +56,4 @@ function AdminDashboard({ children }: AdminDashboardProps) {
   return null;
 }
 
-// Export the component properly
 export default withAdminAccess(AdminDashboard);
