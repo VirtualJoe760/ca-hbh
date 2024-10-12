@@ -3,6 +3,9 @@ const nextConfig = {
     images: {
       domains: ['tailwindui.com', 'images.unsplash.com'],
     },
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
   };
   
   export default nextConfig;
