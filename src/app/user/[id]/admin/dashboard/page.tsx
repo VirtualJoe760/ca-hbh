@@ -3,11 +3,14 @@
 
 import { useSession, signOut } from "next-auth/react";
 import { useRouter, useParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import { withAdminAccess } from "@/utils/withAdminAccess"; // Assuming you're using a specific HOC for admin access
 
-// No children prop is expected in AdminDashboard
-function AdminDashboard() {
+interface AdminDashboardProps {
+  children?: ReactNode;
+}
+
+function AdminDashboard({ children }: AdminDashboardProps) {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { id } = useParams(); // Extracts the user ID from the URL
@@ -51,6 +54,8 @@ function AdminDashboard() {
         >
           Sign Out
         </button>
+        {/* Render children if needed */}
+        {children}
       </div>
     );
   }
@@ -58,5 +63,5 @@ function AdminDashboard() {
   return null;
 }
 
-// Export without expecting { children: ReactNode }
+// Export the component properly
 export default withAdminAccess(AdminDashboard);
