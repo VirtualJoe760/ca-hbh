@@ -119,7 +119,7 @@ const Nav = () => {
                 </DropdownItem>
                 <DropdownDivider />
                 <DropdownItem
-                  onClick={() => signOut()}
+                  onClick={() => signOut({ callbackUrl: '/auth/signin' })}
                   className="cursor-pointer"
                 >
                   <ArrowRightStartOnRectangleIcon />

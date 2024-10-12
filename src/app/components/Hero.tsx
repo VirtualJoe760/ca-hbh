@@ -15,7 +15,7 @@ const Hero = () => {
           className="w-32 h-32"
         />
 
-        <Heading level={1} className="text-3xl sm:text-5xl font-bold">
+        <Heading level={1} className="text-3xl sm:text-5xl font-bold text-">
           Welcome to CA Home Buyers Hub
         </Heading>
         <p className="text-lg sm:text-xl text-muted max-w-2xl">

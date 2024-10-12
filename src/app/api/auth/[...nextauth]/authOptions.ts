@@ -52,11 +52,13 @@ export const authOptions: NextAuthOptions = {
         // Safely cast the user as a CustomUser to include the role
         const customUser = user as CustomUser;
         token.role = customUser.role;
+        token.id = customUser.id; // Include the user's ID in the token
       }
       return token;
     },
     async session({ session, token }) {
       if (token) {
+        session.user.id = token.id as string; // Include the user ID
         session.user.role = token.role as 'buyer' | 'seller' | 'agent' | 'admin';
       }
       return session;

@@ -14,17 +14,20 @@ export default function SignIn() {
   const router = useRouter();
 
   useEffect(() => {
-    if (status === "authenticated" && session?.user?.role) {
-      // Redirect based on user role
-      if (session.user.role === "buyer") {
-        router.push("/user/buyer/dashboard");
-      } else if (session.user.role === "seller") {
-        router.push("/user/seller/dashboard");
-      } else if (session.user.role === "agent") {
-        router.push("/user/agent/dashboard");
-      } else if (session.user.role === "admin") {
-        router.push("/admin/dashboard");
-      }
+    if (status === "authenticated" && session?.user?.role && session?.user?.id) {
+      // Destructure the user role and ID for cleaner logic
+      const { role, id } = session.user;
+
+      // Redirect based on user role and ID
+      const rolePath = {
+        buyer: `/user/${id}/buyer/dashboard`,
+        seller: `/user/${id}/seller/dashboard`,
+        agent: `/user/${id}/agent/dashboard`,
+        admin: `/user/${id}/admin/dashboard`,
+      };
+
+      const redirectTo = rolePath[role] || "/";
+      router.push(redirectTo);
     }
   }, [status, session, router]);
 
@@ -33,14 +36,18 @@ export default function SignIn() {
     setLoading(true);
     setError(null);
 
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: false, // We handle the redirect manually
-    });
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false, // Handle the redirect manually to include user role
+      });
 
-    if (result?.error) {
-      setError(result.error);
+      if (result?.error) {
+        setError(result.error);
+      }
+    } catch (error) {
+      setError("An unexpected error occurred. Please try again.");
     }
 
     setLoading(false);
