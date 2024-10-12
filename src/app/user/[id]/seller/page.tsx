@@ -30,7 +30,7 @@ export default function SellerSetup({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h2 className="text-2xl font-semibold mb-4">Seller Setup</h2>
-      <p>Please provide the address of the home you're selling:</p>
+      <p>Please provide the address of the home you&apos;re selling:</p>
       <input
         type="text"
         placeholder="123 Main St, City, State"

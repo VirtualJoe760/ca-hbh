@@ -12,10 +12,11 @@ export function withRole(
     const router = useRouter();
 
     useEffect(() => {
+      // Only run if the user is authenticated and their role is not the required role
       if (status === "authenticated" && session?.user?.role !== requiredRole) {
-        router.push("/");
+        router.push("/");  // Redirect to home if the role doesn't match
       }
-    }, [status, session, requiredRole, router]);
+    }, [status, session, router]); // Removed 'requiredRole' from the dependency array
 
     if (status === "loading") return <div>Loading...</div>;
 
